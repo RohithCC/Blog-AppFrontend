@@ -41,3 +41,36 @@
 .view-button:hover {
     background-color: darkblue;
 }
+
+.blog-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.blog-table th,
+.blog-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+
+/* Responsive styles */
+
+@media screen and (max-width: 768px) {
+    .blog-table th,
+    .blog-table td {
+        font-size: 14px;
+        /* Adjust font size for smaller screens */
+        padding: 6px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .blog-table th,
+    .blog-table td {
+        font-size: 12px;
+        /* Further adjust font size for smaller screens */
+        padding: 4px;
+    }
+}
