@@ -1,0 +1,34 @@
+/* styles.css */
+
+.container-home {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card-container-home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card-home {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: calc(50% - 10px);
+    /* 50% width with a gap of 20px */
+}
+
+.card-home h2 {
+    margin-top: 0;
+}
+
+.card-home p {
+    margin-bottom: 0;
+}
+
+
+/* Additional styles for Header and Footer if needed */
