@@ -7,7 +7,7 @@ import { Pagination } from 'react-bootstrap';
 import './blog.css';
 import Header from '../CustomComponent/Header';
 import Footer from '../CustomComponent/Footer';
-
+import { Table } from 'react-bootstrap';
 export default function BlogList() {
     const [data, setData] = useState([]);
     const [selectedBlog, setSelectedBlog] = useState(null);
@@ -106,7 +106,7 @@ export default function BlogList() {
                     onCancel={handleEditModalCancel}
                 />
             )}
-            <table className="blog-table">
+                  <Table striped bordered hover responsive>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -139,7 +139,7 @@ export default function BlogList() {
                         </tr>
                     ))}
                 </tbody>
-            </table>
+          </Table>
            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Pagination>
                     {Array.from({ length: Math.ceil(data.length / blogsPerPage) }, (_, i) => (
