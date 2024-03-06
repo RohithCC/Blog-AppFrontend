@@ -3,9 +3,20 @@ import axios from 'axios';
 import Header from '../CustomComponent/Header';
 import Footer from '../CustomComponent/Footer';
 import './home.css';
+import ReactPaginate from 'react-paginate';
 
 export default function Home() {
     const [blogItems, setBlogItems] = useState([]);
+    const [pageNumber, setPageNumber] = useState(0); // Initialize page number state
+
+    const blogsPerPage = 4; // Number of blogs to display per page
+    const pagesVisited = pageNumber * blogsPerPage;
+
+    const pageCount = Math.ceil(blogItems.length / blogsPerPage);
+
+    const changePage = ({ selected }) => {
+        setPageNumber(selected);
+    };
 
     useEffect(() => {
         async function fetchData() {
@@ -26,17 +37,31 @@ export default function Home() {
             <div className="container-home">
                 <h1>Blog List</h1>
                 <div className="card-container-home">
-                        {blogItems.map(item => (
-                <div key={item._id} className="card-home">
-                    <h2>{item.name}</h2>
-                    <p>{item.description}</p>
-                            <img src={item.url} alt={item.name} style={{width: "100px", height:"100px"}} />
-                    <p>{item.createdDate}</p>
+                    {blogItems
+                        .slice(pagesVisited, pagesVisited + blogsPerPage)
+                        .map(item => (
+                            <div key={item._id} className="card-home">
+                                <h2>{item.name}</h2>
+                                <p>{item.description}</p>
+                                <img src={item.url} alt={item.name} style={{ width: "100px", height: "100px" }} />
+                                <p>{item.createdDate}</p>
+                            </div>
+                        ))
+                    }
                 </div>
-            ))}
-
-                </div>
-            </div>
+                <ReactPaginate
+                    previousLabel={"Previous"}
+                    nextLabel={"Next"}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={"pagination"}
+                    previousLinkClassName={"pagination__link"}
+                    nextLinkClassName={"pagination__link"}
+                    disabledClassName={"pagination__link--disabled"}
+                    activeClassName={"pagination__link--active"}
+                />
+        </div>
+  
             <Footer />
         </div>
     );

@@ -1,9 +1,13 @@
 /* styles.css */
 
 .container-home {
+    min-height: calc(100vh - 100px);
+    /* Adjust 100px to match the height of your header */
+    overflow-y: auto;
+    /* Enable vertical scroll */
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    /* Adjust 50px to match the height of your footer */
 }
 
 .card-container-home {
@@ -28,6 +32,30 @@
 
 .card-home p {
     margin-bottom: 0;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination__link {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.pagination__link--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.pagination__link--active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
 }
 
 
